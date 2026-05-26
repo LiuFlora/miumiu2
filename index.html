@@ -194,50 +194,96 @@
             font-weight: bold; /* 字体加粗 */
         }
         /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
-      /* --- 移动端响应式适配代码 --- */
+     /* --- 移动端大卡片自适应适配（刚好比手机屏幕小一圈） --- */
         @media (max-width: 768px) {
             body {
-                height: auto;
-                min-height: 100vh;
-                overflow-y: auto; /* 允许手机端上下滚动 */
-                padding: 20px;
+                height: 100vh;
+                overflow: hidden; /* 保持单屏不滚动 */
+                padding: 20px;    /* 决定了卡片距离手机屏幕边缘的“那一圈”间距 */
                 box-sizing: border-box;
             }
 
             .album-card {
-                flex-direction: column; /* 布局由横向改为纵向 */
+                flex-direction: column;
                 align-items: center;
-                gap: 30px; /* 缩小间距 */
-                padding: 30px 20px;
-                width: 100%;
-                max-width: 400px; /* 限制手机端卡片最大宽度 */
-                border-radius: 25px; /* 适当减小圆角 */
+                justify-content: space-between; /* 让内容在纵向均匀分布，撑满卡片 */
+                gap: 15px;         
+                padding: 30px 24px; /* 加大内边距，让卡片看起来更大气 */
+                width: 90%;        /* 宽度固定比屏幕小一圈 */
+                max-width: 380px;  
+                height: 82vh;      /* 高度也固定比屏幕小一圈，撑起纵向空间 */
+                border-radius: 30px; /* 恢复大圆角 */
                 box-sizing: border-box;
             }
 
+            .visual-shelf {
+                flex: 1;           /* 允许黑胶区域自由扩展高度 */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             .vinyl-record {
-                width: 180px; /* 缩小手机端的黑胶唱片尺寸 */
-                height: 180px;
-                border-width: 8px; /* 减薄边框 */
+                width: 160px;      /* 唱片尺寸大幅回归！更具视觉冲击力 */
+                height: 160px;
+                border-width: 8px;  
+            }
+
+            .vinyl-dot {
+                width: 14px;       
+                height: 14px;
+                border-width: 3px;
             }
 
             .info-section {
-                width: 100%; /* 让信息区域撑满卡片宽度 */
+                width: 100%;
+                flex: 1.5;         /* 让歌单和按钮区域占主要高度 */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between; /* 内部组件自动上下贴边分配 */
             }
 
             .album-title {
-                font-size: 2rem; /* 减小标题字号防止折行难看 */
+                font-size: 1.8rem; /* 标题字号加大 */
                 text-align: center;
+                margin-bottom: 2px;
             }
 
             .artist-name {
                 text-align: center;
-                margin-bottom: 20px;
+                margin-bottom: 12px; 
+                font-size: 0.7rem;  
             }
             
+            .playlist {
+                margin-bottom: 0;  /* 交给 space-between 自动分配间距 */
+                display: flex;
+                flex-direction: column;
+                gap: 8px;          /* 歌单行与行之间的间距 */
+            }
+
             .track {
-                padding: 12px 14px; /* 稍微紧凑一点的播放列表 */
-                font-size: 0.9rem;
+                padding: 10px 14px;  /* 歌单行高恢复，容易手指点击 */
+                font-size: 0.85rem;   
+                margin-bottom: 0;  
+                border-radius: 12px;
+            }
+
+            .controls {
+                width: 100%;
+                margin-top: 10px;  /* 与歌单拉开一点距离 */
+            }
+
+            .status {
+                margin-bottom: 6px; 
+                text-align: center;
+                font-size: 0.65rem;   
+            }
+
+            .main-btn {
+                padding: 14px;       /* 按钮加大，更好按 */
+                font-size: 0.85rem;
+                border-radius: 14px;
             }
         }
     </style>
