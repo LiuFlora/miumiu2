@@ -5,66 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuneStyle 我的数字专辑</title>
     <style>
-        /* --- 移动端响应式适配代码（完美适配 iPhone 尺寸） --- */
+        /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
         @media (max-width: 768px) {
             body {
-                height: auto;
-                min-height: 100vh;
-                overflow-y: auto; /* 允许手机端上下滚动 */
-                padding: 15px;    /* 缩小外层留白 */
+                height: 100vh; /* 强行固定高度，不让它超出首屏 */
+                overflow: hidden; /* 隐藏手机端滚动条，保持精致感 */
+                padding: 10px;
                 box-sizing: border-box;
             }
 
             .album-card {
-                flex-direction: column; /* 布局由横向改为纵向 */
+                flex-direction: column;
                 align-items: center;
-                gap: 20px;       /* 缩小组件间的间距 */
-                padding: 25px 18px; /* 进一步收紧卡片内边距 */
+                gap: 12px;         /* 组件间距极小化 */
+                padding: 18px 15px; /* 大幅缩减卡片内边距 */
                 width: 100%;
-                max-width: 360px; /* 限制手机端卡片最大宽度，更符合 iPhone 握感 */
-                border-radius: 25px; 
+                max-width: 310px;  /* 宽度缩到 310px，绝对不会撑破屏幕 */
+                border-radius: 20px;
                 box-sizing: border-box;
             }
 
             .vinyl-record {
-                width: 150px;    /* 黑胶唱片再次缩小，精致且不占空间 */
-                height: 150px;
-                border-width: 6px; /* 减薄边框，匹配小尺寸 */
+                width: 110px;      /* 黑胶唱片缩到巴掌大，非常精致 */
+                height: 110px;
+                border-width: 5px;  /* 边框变细 */
+            }
+
+            .vinyl-dot {
+                width: 12px;       /* 中心圆点同步缩小 */
+                height: 12px;
+                border-width: 2px;
             }
 
             .info-section {
-                width: 100%;     /* 让信息区域撑满卡片宽度 */
+                width: 100%;
             }
 
             .album-title {
-                font-size: 1.6rem; /* 减小标题字号，单行或双行显示更秀气 */
+                font-size: 1.3rem; /* 标题字号缩小，确保一行能放得下 */
                 text-align: center;
             }
 
             .artist-name {
                 text-align: center;
-                margin-bottom: 15px; /* 缩短与歌单的距离 */
+                margin-bottom: 10px; /* 紧贴歌单 */
+                font-size: 0.65rem;  /* 歌手名微型化 */
+                letter-spacing: 2px;
             }
             
+            .playlist {
+                margin-bottom: 15px; /* 缩短与底部按钮的距离 */
+            }
+
             .track {
-                padding: 10px 14px;  /* 歌单每行稍微变矮一点 */
-                font-size: 0.85rem;  /* 字体微调小 */
-                margin-bottom: 8px;
-                border-radius: 12px;
+                padding: 8px 12px;   /* 歌单行高极简压缩 */
+                font-size: 0.8rem;   /* 歌单文字变小 */
+                margin-bottom: 6px;
+                border-radius: 10px;
             }
 
             .main-btn {
-                padding: 14px;      /* 按钮高度缩小 */
-                font-size: 0.85rem;
-                border-radius: 14px;
+                padding: 11px;       /* 按钮变得更秀气 */
+                font-size: 0.8rem;
+                border-radius: 12px;
             }
 
             .status {
-                margin-bottom: 8px;
-                text-align: center; /* 状态文本居中 */
+                margin-bottom: 5px;
+                text-align: center;
+                font-size: 0.6rem;   /* 状态栏微型化 */
             }
         }
-        
         /* --- TODO 3: 尝试修改这两个颜色变量，一键改变主题 --- */
         /* --- TODO 3: Try modifying these two color variables to change the theme --- */
         :root {
