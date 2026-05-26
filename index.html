@@ -5,52 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuneStyle 我的数字专辑</title>
     <style>
-        /* --- 移动端响应式适配代码 --- */
+        /* --- 移动端响应式适配代码（完美适配 iPhone 尺寸） --- */
         @media (max-width: 768px) {
             body {
                 height: auto;
                 min-height: 100vh;
                 overflow-y: auto; /* 允许手机端上下滚动 */
-                padding: 20px;
+                padding: 15px;    /* 缩小外层留白 */
                 box-sizing: border-box;
             }
 
             .album-card {
                 flex-direction: column; /* 布局由横向改为纵向 */
                 align-items: center;
-                gap: 30px; /* 缩小间距 */
-                padding: 30px 20px;
+                gap: 20px;       /* 缩小组件间的间距 */
+                padding: 25px 18px; /* 进一步收紧卡片内边距 */
                 width: 100%;
-                max-width: 400px; /* 限制手机端卡片最大宽度 */
-                border-radius: 25px; /* 适当减小圆角 */
+                max-width: 360px; /* 限制手机端卡片最大宽度，更符合 iPhone 握感 */
+                border-radius: 25px; 
                 box-sizing: border-box;
             }
 
             .vinyl-record {
-                width: 180px; /* 缩小手机端的黑胶唱片尺寸 */
-                height: 180px;
-                border-width: 8px; /* 减薄边框 */
+                width: 150px;    /* 黑胶唱片再次缩小，精致且不占空间 */
+                height: 150px;
+                border-width: 6px; /* 减薄边框，匹配小尺寸 */
             }
 
             .info-section {
-                width: 100%; /* 让信息区域撑满卡片宽度 */
+                width: 100%;     /* 让信息区域撑满卡片宽度 */
             }
 
             .album-title {
-                font-size: 2rem; /* 减小标题字号防止折行难看 */
+                font-size: 1.6rem; /* 减小标题字号，单行或双行显示更秀气 */
                 text-align: center;
             }
 
             .artist-name {
                 text-align: center;
-                margin-bottom: 20px;
+                margin-bottom: 15px; /* 缩短与歌单的距离 */
             }
             
             .track {
-                padding: 12px 14px; /* 稍微紧凑一点的播放列表 */
-                font-size: 0.9rem;
+                padding: 10px 14px;  /* 歌单每行稍微变矮一点 */
+                font-size: 0.85rem;  /* 字体微调小 */
+                margin-bottom: 8px;
+                border-radius: 12px;
+            }
+
+            .main-btn {
+                padding: 14px;      /* 按钮高度缩小 */
+                font-size: 0.85rem;
+                border-radius: 14px;
+            }
+
+            .status {
+                margin-bottom: 8px;
+                text-align: center; /* 状态文本居中 */
             }
         }
+        
         /* --- TODO 3: 尝试修改这两个颜色变量，一键改变主题 --- */
         /* --- TODO 3: Try modifying these two color variables to change the theme --- */
         :root {
