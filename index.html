@@ -195,7 +195,49 @@
         }
         /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
      /* --- 移动端大卡片自适应适配（刚好比手机屏幕小一圈） --- */
-      
+      @media (max-width: 768px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto; /* 允许手机端上下滚动 */
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .album-card {
+                flex-direction: column; /* 布局由横向改为纵向 */
+                align-items: center;
+                gap: 30px; /* 缩小间距 */
+                width: 400px; /* 限制手机端卡片最大宽度 */
+                border-radius: 25px; /* 适当减小圆角 */
+                box-sizing: border-box;
+            }
+
+            .vinyl-record {
+                width: 220px; /* 缩小手机端的黑胶唱片尺寸 */
+                height: 220px;
+                border-width: 8px; /* 减薄边框 */
+            }
+
+            .info-section {
+                width: 100%; /* 让信息区域撑满卡片宽度 */
+            }
+
+            .album-title {
+                font-size: 2rem; /* 减小标题字号防止折行难看 */
+                text-align: center;
+            }
+
+            .artist-name {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .track {
+                padding: 12px 14px; /* 稍微紧凑一点的播放列表 */
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
