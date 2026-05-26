@@ -5,6 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuneStyle 我的数字专辑</title>
     <style>
+        /* --- 移动端响应式适配代码 --- */
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto; /* 允许手机端上下滚动 */
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .album-card {
+                flex-direction: column; /* 布局由横向改为纵向 */
+                align-items: center;
+                gap: 30px; /* 缩小间距 */
+                padding: 30px 20px;
+                width: 100%;
+                max-width: 400px; /* 限制手机端卡片最大宽度 */
+                border-radius: 25px; /* 适当减小圆角 */
+                box-sizing: border-box;
+            }
+
+            .vinyl-record {
+                width: 180px; /* 缩小手机端的黑胶唱片尺寸 */
+                height: 180px;
+                border-width: 8px; /* 减薄边框 */
+            }
+
+            .info-section {
+                width: 100%; /* 让信息区域撑满卡片宽度 */
+            }
+
+            .album-title {
+                font-size: 2rem; /* 减小标题字号防止折行难看 */
+                text-align: center;
+            }
+
+            .artist-name {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .track {
+                padding: 12px 14px; /* 稍微紧凑一点的播放列表 */
+                font-size: 0.9rem;
+            }
+        }
         /* --- TODO 3: 尝试修改这两个颜色变量，一键改变主题 --- */
         /* --- TODO 3: Try modifying these two color variables to change the theme --- */
         :root {
