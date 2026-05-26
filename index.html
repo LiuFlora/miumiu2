@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneStyle 我的数字专辑</title>
+    <style>
+        /* --- TODO 3: 尝试修改这两个颜色变量，一键改变主题 --- */
+        /* --- TODO 3: Try modifying these two color variables to change the theme --- */
+        :root {
+            --accent: #00f2ff;   /* 赛博青 Cyber cyan 用于高亮、渐变、按钮悬停等 */
+            --purple: #bc00ff;   /* 魅惑紫 Alluring Purple 预留作为辅色或渐变搭配 */
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;  /* 去掉默认外边距 */
+            height: 100vh;
+            background-color: #050505;  /* 极暗背景，突出霓虹色 */
+            display: flex;
+            justify-content: center;  /* 使内部 .album-card 水平和垂直居中 */
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #fff;
+            overflow: hidden;  /* 隐藏滚动条 */
+        }
+
+        /* --- TODO 4: 弥散背景 --- */
+        /* --- TODO 4: Distract the background --- */
+        .bg-glow {
+            position: absolute;  /* 绝对定位覆盖全屏幕 */
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%,rgba(89, 57, 230, 0.35)0%,transparent 45%),
+                radial-gradient(circle at 85% 70%,rgba(41, 236, 247, 0.25)0%,transparent 45%);
+            z-index: -1;  /* 位于普通内容下方 */
+            /* --- TODO 5: 玻璃拟态 --- */
+            /* --- TODO 5: Glass Mimicry --- */
+            filter: blur(100px);
+        }
+
+        .album-card {
+            background: var(--glass);
+            /* --- TODO 5: 制作磨砂玻璃卡片(20px-30px)--- */
+            /* --- TODO 5: Create frosted glass cards(20px-30px) --- */
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border);  /* 边框粗细和颜色 */
+            border-radius: 40px;  /* 圆角 */
+            padding: 40px;  /* 内边距 */
+            display: flex;  
+            gap: 50px;  /* 间距 */
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);  
+            max-width: 850px;  
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);  /*如果后续给卡片增加悬停缩放，会有弹性动画。*/
+        }
+
+        /* --- TODO 7: 黑胶旋转 --- */
+        /* --- TODO 7: Rotating Vinyl Records --- */
+        @keyframes rotateRecord {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    
+        .visual-shelf {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .vinyl-record {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            border: 12px solid #111;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.6);
+            /* TODO 7: 调用动画8秒一圈，匀速，无限循环 */
+            /* TODO 7: Use the animation to move at a constant speed for 8 seconds per cycle, and loop infinitely */
+            animation: rotateRecord 8s linear infinite;
+            animation-play-state: paused; /* 初始暂停 */
+        }
+
+        .vinyl-record.playing {
+            animation-play-state: running; /* 播放时激活旋转 */
+        }
+            
+        .vinyl-record img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  /* 图片填满圆形区域，裁切适配 */
+            opacity: 0.85;  /* 轻微透明度露出“黑胶”底色 */
+        }
+
+        .vinyl-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #050505;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.2);
+            z-index: 2;
+        }
+
+        .info-section {
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .album-title {
+            font-size: 2.8rem;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--accent));  /**/
+            -webkit-background-clip: text;  /* 实现渐变文字效果 */
+            -webkit-text-fill-color: transparent;  /* 实现渐变文字效果 */
+            letter-spacing: -1px;  /* 紧凑字间距 */
+        }
+
+        .artist-name {
+            color: #888;
+            letter-spacing: 4px;  
+            font-size: 0.75rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;  /* 文字大写 */
+        }
+
+        .playlist {
+            list-style: none; 
+            padding: 0;
+            margin-bottom: 30px; /* 距离底部的间距 */
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            border-radius: 15px;
+            cursor: pointer;  /**/
+            /* --- TODO 6: 音乐列表的交互样式 --- */
+            /* --- TODO 6: Interaction style of the music list --- */
+            
+            border: 1px solid transparent;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .track:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .track.active {
+            background: rgba(0, 242, 255, 0.12);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+        }
+
+        .main-btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 18px;
+            border: none;
+            background: #fff;
+            color: #000;
+            font-weight: 900;
+            font-size: 0.9rem; /* 字体大小 */
+            cursor: pointer;
+            letter-spacing: 2px;
+            /* --- TODO 6: 按钮的交互样式 --- */
+            /* --- TODO 6: Interaction style of the buttons --- */
+            
+        }
+
+        .main-btn:hover {
+            background: var(--accent);
+            box-shadow: 0 0 25px var(--accent);
+            transform: translateY(-4px);  /* 悬停时向上位移 4px，过渡平滑 */
+        }
+
+        .status {
+            font-size: 0.7rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            opacity: 0.8;
+            font-weight: bold; /* 字体加粗 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <main class="container">
+        <div class="album-card" id="card">
+            
+            <div class="visual-shelf">
+                <div class="vinyl-record" id="vinyl">
+                    <!-- TODO 1: 请通过src设置封面图 -->
+                    <!-- TODO 1: Please set the cover image through src -->
+                    <img src="https://ts1.tc.mm.bing.net/th/id/R-C.7b0bacd5962c9902f65e6984112d05a2?rik=01sBdkfNqHOcog&riu=http%3a%2f%2fp.qpic.cn%2fmzk_kandan%2fduc2TvpEgSSZWXh5aLBHSosvjiaxwpibEbgkiaicCaCLt48kkZ9nJBpEbQ%2f0&ehk=LLOmmsCdFUwJKVtwmFqozfYdOPGz3voTYO5mEah0Ris%3d&risl=&pid=ImgRaw&r=0vvv" alt="Cover">
+                </div>
+                <div class="vinyl-dot"></div>
+            </div>
+
+            <div class="info-section">
+                <!-- TODO 1: 更改专辑名和歌手名 -->
+                <!-- TODO 1: Change the album name and the artist name -->
+                <h1 class="album-title">熊出没</h1>
+                <p class="artist-name">BY: 熊大 熊二</p>
+                
+                <ul class="playlist" id="playlist">
+                    <!-- TODO 2: 请通过data-src加入音乐，并修改音乐名 -->
+                    <!-- TODO 2: Please add the song through data-src and change the song title -->
+                    <li class="track" data-src="1.mp3">
+                        <span class="name">光头强来支持了</span>
+                        <span class="icon">▶</span>
+                    </li>
+                    <li class="track" data-src="2.mp3">
+                        <span class="name">芭比来支持了</span>
+                        <span class="icon">▶</span>
+                    </li>
+                    <li class="track" data-src="3.mp3">
+                        <span class="name">艾莎来支持了</span>
+                        <span class="icon">▶</span>
+                    </li>
+                </ul>
+
+                <audio id="audio-player"></audio>
+                <div class="controls">
+                    <div class="status" id="status-text">SYSTEM READY // SELECT TRACK</div>
+                    <button class="main-btn" id="play-pause-btn">PLAY / PAUSE</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const player = document.getElementById('audio-player');
+        const tracks = document.querySelectorAll('.track');
+        const vinyl = document.getElementById('vinyl');
+        const statusText = document.getElementById('status-text');
+        const playBtn = document.getElementById('play-pause-btn');
+
+        // 核心交互逻辑
+        tracks.forEach(track => {
+            track.addEventListener('click', () => {
+                const src = track.getAttribute('data-src');
+                const name = track.querySelector('.name').innerText;
+                
+                tracks.forEach(t => t.classList.remove('active'));
+                track.classList.add('active');
+                
+                player.src = src;
+                player.play();
+                
+                statusText.innerText = "NOW STREAMING: " + name.toUpperCase();
+                vinyl.classList.add('playing');
+            });
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (player.paused) {
+                if(!player.src) return; // 如果没选歌点击无效
+                player.play();
+                vinyl.classList.add('playing');
+            } else {
+                player.pause();
+                vinyl.classList.remove('playing');
+            }
+        });
+    </script>
+</body>
+</html>
