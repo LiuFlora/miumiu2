@@ -194,11 +194,12 @@
             font-weight: bold; /* 字体加粗 */
         }
         /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
-        @media (max-width: 760px) {
+       /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
+        @media (max-width: 768px) {
             body {
-                height: 90vh; /* 强行固定高度，不让它超出首屏 */
+                height: 100vh; /* 强行固定高度，不让它超出首屏 */
                 overflow: hidden; /* 隐藏手机端滚动条，保持精致感 */
-                padding: 8px;
+                padding: 10px;
                 box-sizing: border-box;
             }
 
@@ -214,14 +215,14 @@
             }
 
             .vinyl-record {
-                width: 100px;      /* 黑胶唱片缩到巴掌大，非常精致 */
-                height: 100px;
+                width: 110px;      /* 黑胶唱片缩到巴掌大，非常精致 */
+                height: 110px;
                 border-width: 5px;  /* 边框变细 */
             }
 
             .vinyl-dot {
-                width: 11px;       /* 中心圆点同步缩小 */
-                height: 11px;
+                width: 12px;       /* 中心圆点同步缩小 */
+                height: 12px;
                 border-width: 2px;
             }
 
@@ -242,7 +243,7 @@
             }
             
             .playlist {
-                margin-bottom: 12px; /* 缩短与底部按钮的距离 */
+                margin-bottom: 15px; /* 缩短与底部按钮的距离 */
             }
 
             .track {
@@ -253,7 +254,7 @@
             }
 
             .main-btn {
-                padding: 10px;       /* 按钮变得更秀气 */
+                padding: 11px;       /* 按钮变得更秀气 */
                 font-size: 0.8rem;
                 border-radius: 12px;
             }
