@@ -5,93 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuneStyle 我的数字专辑</title>
     <style>
-      /* --- 移动端极限压缩高度版（确保 iPhone 首屏完全显示） --- */
-        @media (max-width: 768px) {
-            body {
-                height: 100vh;
-                overflow: hidden; /* 严禁滚动 */
-                padding: 10px;
-                box-sizing: border-box;
-            }
-
-            .album-card {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center; /* 让内部元素紧凑居中 */
-                gap: 8px;          /* 极度压缩组件间距 */
-                padding: 12px 15px; /* 大幅削减上下内边距 */
-                width: 100%;
-                max-width: 310px;  
-                max-height: 85vh;  /* 限制卡片最大高度不超过屏幕的 85% */
-                border-radius: 20px;
-                box-sizing: border-box;
-            }
-
-            .visual-shelf {
-                margin: 0;
-                padding: 0;
-                height: auto;
-            }
-
-            .vinyl-record {
-                width: 95px;       /* 再次缩小黑胶唱片，确保给下方腾出高度 */
-                height: 95px;
-                border-width: 4px;  
-            }
-
-            .vinyl-dot {
-                width: 10px;       
-                height: 10px;
-                border-width: 2px;
-            }
-
-            .info-section {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: transform;
-            }
-
-            .album-title {
-                font-size: 1.1rem; /* 缩小字号 */
-                text-align: center;
-                line-height: 1.2;
-            }
-
-            .artist-name {
-                text-align: center;
-                margin-bottom: 6px; /* 压缩歌手名下方的间距 */
-                font-size: 0.6rem;  
-                letter-spacing: 1px;
-            }
-            
-            .playlist {
-                margin-bottom: 8px; /* 压缩歌单下方的间距 */
-            }
-
-            .track {
-                padding: 6px 10px;   /* 极度压缩歌单每行的高度 */
-                font-size: 0.75rem;   /* 字体微调 */
-                margin-bottom: 4px;  /* 紧凑每行间距 */
-                border-radius: 8px;
-            }
-
-            .controls {
-                width: 100%;
-            }
-
-            .status {
-                margin-bottom: 4px; /* 压缩状态栏间距 */
-                text-align: center;
-                font-size: 0.55rem;   
-            }
-
-            .main-btn {
-                padding: 8px;       /* 极简按钮高度，防止被挤出屏幕 */
-                font-size: 0.75rem;
-                border-radius: 10px;
-            }
-        }
+      
         /* --- TODO 3: 尝试修改这两个颜色变量，一键改变主题 --- */
         /* --- TODO 3: Try modifying these two color variables to change the theme --- */
         :root {
@@ -278,6 +192,77 @@
             margin-bottom: 12px;
             opacity: 0.8;
             font-weight: bold; /* 字体加粗 */
+        }
+        /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
+        @media (max-width: 760px) {
+            body {
+                height: 90vh; /* 强行固定高度，不让它超出首屏 */
+                overflow: hidden; /* 隐藏手机端滚动条，保持精致感 */
+                padding: 8px;
+                box-sizing: border-box;
+            }
+
+            .album-card {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;         /* 组件间距极小化 */
+                padding: 18px 15px; /* 大幅缩减卡片内边距 */
+                width: 100%;
+                max-width: 310px;  /* 宽度缩到 310px，绝对不会撑破屏幕 */
+                border-radius: 20px;
+                box-sizing: border-box;
+            }
+
+            .vinyl-record {
+                width: 100px;      /* 黑胶唱片缩到巴掌大，非常精致 */
+                height: 100px;
+                border-width: 5px;  /* 边框变细 */
+            }
+
+            .vinyl-dot {
+                width: 11px;       /* 中心圆点同步缩小 */
+                height: 11px;
+                border-width: 2px;
+            }
+
+            .info-section {
+                width: 100%;
+            }
+
+            .album-title {
+                font-size: 1.3rem; /* 标题字号缩小，确保一行能放得下 */
+                text-align: center;
+            }
+
+            .artist-name {
+                text-align: center;
+                margin-bottom: 10px; /* 紧贴歌单 */
+                font-size: 0.65rem;  /* 歌手名微型化 */
+                letter-spacing: 2px;
+            }
+            
+            .playlist {
+                margin-bottom: 12px; /* 缩短与底部按钮的距离 */
+            }
+
+            .track {
+                padding: 8px 12px;   /* 歌单行高极简压缩 */
+                font-size: 0.8rem;   /* 歌单文字变小 */
+                margin-bottom: 6px;
+                border-radius: 10px;
+            }
+
+            .main-btn {
+                padding: 10px;       /* 按钮变得更秀气 */
+                font-size: 0.8rem;
+                border-radius: 12px;
+            }
+
+            .status {
+                margin-bottom: 5px;
+                text-align: center;
+                font-size: 0.6rem;   /* 状态栏微型化 */
+            }
         }
     </style>
 </head>
