@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuneStyle 我的数字专辑</title>
     <style>
-      
         /* --- TODO 3: 尝试修改这两个颜色变量，一键改变主题 --- */
         /* --- TODO 3: Try modifying these two color variables to change the theme --- */
         :root {
@@ -34,8 +33,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 10% 20%,rgba(89, 57, 230, 0.35)0%,transparent 45%),
-                radial-gradient(circle at 85% 70%,rgba(41, 236, 247, 0.25)0%,transparent 45%);
+                radial-gradient(circle at 15% 25%, rgba(255, 106, 186, 0.817) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, rgba(234, 136, 254, 0.829) 0%, transparent 60%);
             z-index: -1;  /* 位于普通内容下方 */
             /* --- TODO 5: 玻璃拟态 --- */
             /* --- TODO 5: Glass Mimicry --- */
@@ -46,10 +45,11 @@
             background: var(--glass);
             /* --- TODO 5: 制作磨砂玻璃卡片(20px-30px)--- */
             /* --- TODO 5: Create frosted glass cards(20px-30px) --- */
-            backdrop-filter: blur(25px);
+            
+            backdrop-filter: blur(25px); 
             border: 1px solid var(--border);  /* 边框粗细和颜色 */
             border-radius: 40px;  /* 圆角 */
-            padding: 20px;  /* 内边距 */
+            padding: 2cqh;  /* 内边距 */
             display: flex;  
             gap: 50px;  /* 间距 */
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);  
@@ -60,10 +60,10 @@
         /* --- TODO 7: 黑胶旋转 --- */
         /* --- TODO 7: Rotating Vinyl Records --- */
         @keyframes rotateRecord {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
         }
-    
+        
         .visual-shelf {
             position: relative;
             display: flex;
@@ -80,14 +80,14 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.6);
             /* TODO 7: 调用动画8秒一圈，匀速，无限循环 */
             /* TODO 7: Use the animation to move at a constant speed for 8 seconds per cycle, and loop infinitely */
-            animation: rotateRecord 8s linear infinite;
+            animation:rotateRecord 8s linear infinite;
             animation-play-state: paused; /* 初始暂停 */
         }
 
         .vinyl-record.playing {
             animation-play-state: running; /* 播放时激活旋转 */
         }
-            
+
         .vinyl-record img {
             width: 100%;
             height: 100%;
@@ -147,7 +147,7 @@
             cursor: pointer;  /**/
             /* --- TODO 6: 音乐列表的交互样式 --- */
             /* --- TODO 6: Interaction style of the music list --- */
-            
+            transition: all 0.3s ease;
             border: 1px solid transparent;
             margin-bottom: 10px;
             background: rgba(255,255,255,0.02);
@@ -177,7 +177,7 @@
             letter-spacing: 2px;
             /* --- TODO 6: 按钮的交互样式 --- */
             /* --- TODO 6: Interaction style of the buttons --- */
-            
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .main-btn:hover {
@@ -193,8 +193,7 @@
             opacity: 0.8;
             font-weight: bold; /* 字体加粗 */
         }
-        /* --- 移动端超紧凑适配（适合小屏 iPhone / 单屏完美显示） --- */
-     /* --- 移动端大卡片自适应适配（刚好比手机屏幕小一圈） --- */
+        /* --- 移动端大卡片自适应适配（刚好比手机屏幕小一圈） --- */
       @media (max-width: 768px) {
             body {
                 height: auto;
@@ -252,7 +251,7 @@
                 <div class="vinyl-record" id="vinyl">
                     <!-- TODO 1: 请通过src设置封面图 -->
                     <!-- TODO 1: Please set the cover image through src -->
-                    <img src="https://ts1.tc.mm.bing.net/th/id/R-C.7b0bacd5962c9902f65e6984112d05a2?rik=01sBdkfNqHOcog&riu=http%3a%2f%2fp.qpic.cn%2fmzk_kandan%2fduc2TvpEgSSZWXh5aLBHSosvjiaxwpibEbgkiaicCaCLt48kkZ9nJBpEbQ%2f0&ehk=LLOmmsCdFUwJKVtwmFqozfYdOPGz3voTYO5mEah0Ris%3d&risl=&pid=ImgRaw&r=0vvv" alt="Cover">
+                    <img src="1.jpg" alt="image">
                 </div>
                 <div class="vinyl-dot"></div>
             </div>
@@ -260,22 +259,22 @@
             <div class="info-section">
                 <!-- TODO 1: 更改专辑名和歌手名 -->
                 <!-- TODO 1: Change the album name and the artist name -->
-                <h1 class="album-title">熊出没</h1>
-                <p class="artist-name">BY: 熊大 熊二</p>
+                <h1 class="album-title">Gazelle</h1>
+                <p class="artist-name">BY: Shakira</p>
                 
                 <ul class="playlist" id="playlist">
                     <!-- TODO 2: 请通过data-src加入音乐，并修改音乐名 -->
                     <!-- TODO 2: Please add the song through data-src and change the song title -->
                     <li class="track" data-src="1.mp3">
-                        <span class="name">光头强来支持了</span>
+                        <span class="name">Try Everything</span>
                         <span class="icon">▶</span>
                     </li>
                     <li class="track" data-src="2.mp3">
-                        <span class="name">芭比来支持了</span>
+                        <span class="name">Zoo</span>
                         <span class="icon">▶</span>
                     </li>
                     <li class="track" data-src="3.mp3">
-                        <span class="name">艾莎来支持了</span>
+                        <span class="name">wakawaka</span>
                         <span class="icon">▶</span>
                     </li>
                 </ul>
